@@ -1,0 +1,23 @@
+*.txt
+*.csv
+
+# Local / tooling (praisonai-examples repo)
+.DS_Store
+__pycache__/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.py[cod]
+*.egg-info/
+.eggs/
+dist/
+build/
+.env
+.env.*
+!.env.example
+.venv/
+venv/
+.idea/
+.vscode/
+*.log
+.praison/

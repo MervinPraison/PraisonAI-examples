@@ -1,0 +1,61 @@
+name: Sync examples from PraisonAI
+
+on:
+  schedule:
+    - cron: '0 3 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Configure Git
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+
+      - name: Pull latest examples from PraisonAI
+        run: |
+          set -euo pipefail
+          git clone --filter=blob:none --no-checkout https://github.com/MervinPraison/PraisonAI.git _upstream
+          cd _upstream
+          git sparse-checkout init --cone
+          git sparse-checkout set examples
+          git checkout main
+          cd ..
+          rsync -a --delete \
+            --filter='protect /.git/' \
+            --filter='protect /.github/' \
+            _upstream/examples/ "${GITHUB_WORKSPACE}/"
+          rm -rf _upstream
+
+      - name: Check for changes
+        id: git-check
+        run: |
+          git add -A
+          if git diff --staged --quiet; then
+            echo "changes=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changes=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Get timestamp
+        id: date
+        if: steps.git-check.outputs.changes == 'true'
+        run: echo "datetime=$(date -u '+%Y-%m-%d %H:%M:%S UTC')" >> "$GITHUB_OUTPUT"
+
+      - name: Commit and push
+        if: steps.git-check.outputs.changes == 'true'
+        run: |
+          git commit -m "sync: mirror examples from PraisonAI — ${{ steps.date.outputs.datetime }}"
+          git push
+
+      - name: No changes
+        if: steps.git-check.outputs.changes == 'false'
+        run: echo "No changes from upstream examples"
