@@ -1,3 +1,7 @@
+# Mirrors https://github.com/MervinPraison/PraisonAI/tree/main/examples into this repo root.
+# Preserves .git/ and .github/; uses rsync --delete so files removed upstream disappear here too.
+# Schedule: daily 03:00 UTC with a three-day gate on calendar; workflow_dispatch runs every time.
+# When there are diffs: commit on a branch and open a PR to main (no direct push to main).
 name: Sync examples from PraisonAI
 
 on:

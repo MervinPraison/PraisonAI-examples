@@ -2,9 +2,40 @@
 
 This repository mirrors the [`examples`](https://github.com/MervinPraison/PraisonAI/tree/main/examples) directory from [PraisonAI](https://github.com/MervinPraison/PraisonAI). The GitHub remote is [MervinPraison/PraisonAI-examples](https://github.com/MervinPraison/PraisonAI-examples).
 
-## Sync
+## Mirror contract
 
-This repository is the working copy for examples: day-to-day fixes and updates land here (including via GitHub Actions you add on this repo). Alignment with the monorepo is separate: on a **three-day cadence** (UTC), Actions compares this tree to [`PraisonAI` `examples/`](https://github.com/MervinPraison/PraisonAI/tree/main/examples) and, when there is a diff, opens a **pull request** for you to review and merge—nothing is pushed straight to `main` from that job. You can also run that sync **manually** from the Actions tab (`workflow_dispatch`).
+- **Source of truth for layout and new examples** is upstream [`PraisonAI` → `examples/`](https://github.com/MervinPraison/PraisonAI/tree/main/examples). This repo tracks that tree.
+- **Automation** clones `examples/` from `main` and applies it to the repo root with `rsync --delete`, while **`.git/`** and **`.github/`** are protected so Git metadata and workflows are never removed by sync.
+- Anything else at the repository root (Python trees, YAML, assets, and so on) is **mirrored from upstream** unless you later add **repo-only overlay** paths documented in [CONTRIBUTING.md](CONTRIBUTING.md) and matching `rsync` rules in the workflow. **There are no overlay directories today**—the whole mirrored tree comes from PraisonAI.
+
+## Layout of this mirror
+
+Upstream groups material in several ways at once; use this map when browsing.
+
+| Area | What you will find |
+|------|---------------------|
+| **`python/`** | Curated Python examples (agents, workflows, tools, providers, managed agents, and similar). Often the best place to start for Python. |
+| **Repository root** | Many additional Python packages and single-file `.py` examples (for example `basic/`, `serve/`, `vector/`, `workflows/`) that live at the root in upstream for historical reasons. |
+| **`yaml/`** | YAML workflow definitions and related layout; see upstream [examples README](https://github.com/MervinPraison/PraisonAI/blob/main/examples/README.md) for YAML links. |
+| **`js/`** | TypeScript/JavaScript examples (Node) under the `js/` tree upstream. |
+| **`typescript/`** | A smaller set of TypeScript examples alongside `js/` until upstream consolidates naming. |
+| **Rust** | There is **no** `rust/` examples tree in this mirror yet. Rust SDK work lives in the main monorepo under [`src/praisonai-rust`](https://github.com/MervinPraison/PraisonAI/tree/main/src/praisonai-rust). |
+
+For tables, quick links, and how to run samples, prefer the upstream [examples README](https://github.com/MervinPraison/PraisonAI/blob/main/examples/README.md) so you always see the latest copy.
+
+## Sync with PraisonAI
+
+The workflow [`.github/workflows/sync-from-praisonai.yml`](.github/workflows/sync-from-praisonai.yml) keeps this repository aligned with upstream.
+
+| Behaviour | Detail |
+|-----------|--------|
+| **What is copied** | The full `examples/` directory from `MervinPraison/PraisonAI` branch `main`. |
+| **Deletes** | `rsync --delete` removes files and directories in this mirror that no longer exist upstream (except protected `.git/` and `.github/`). |
+| **Schedule** | Cron runs daily at **03:00 UTC**; a **three-day gate** (UTC, unix-day mod 3) skips most scheduled days so a full sync attempt runs roughly **once every three days**. |
+| **Manual run** | **Actions → Sync examples from PraisonAI → Run workflow** runs immediately with no three-day gate. |
+| **Pull requests** | When the mirrored tree differs from `main`, the workflow creates a branch, commits, pushes, and opens a **PR** into `main`. Nothing is pushed straight to `main` from that job. |
+
+You can still commit **directly to `main`** in this repo (for example hotfixes). If the same paths differ upstream, a later merged sync PR will **overwrite** those paths with upstream content—prefer porting structural fixes into [PraisonAI](https://github.com/MervinPraison/PraisonAI) so they persist. See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Documentation
 
