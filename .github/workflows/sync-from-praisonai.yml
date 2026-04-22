@@ -2,11 +2,13 @@ name: Sync examples from PraisonAI
 
 on:
   schedule:
+    # Eligible daily at 03:00 UTC; the “every three days” gate runs in the workflow.
     - cron: '0 3 * * *'
   workflow_dispatch:
 
 permissions:
   contents: write
+  pull-requests: write
 
 jobs:
   sync:
@@ -15,12 +17,31 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Every three days (scheduled only)
+        id: interval
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "proceed=true" >> "$GITHUB_OUTPUT"
+            echo "Manual run: sync will run."
+            exit 0
+          fi
+          # Unix-day bucket mod 3 ≈ one eligible day in three (UTC).
+          if [ $(( ($(date -u +%s) / 86400) % 3 )) -eq 0 ]; then
+            echo "proceed=true" >> "$GITHUB_OUTPUT"
+            echo "Scheduled sync: in three-day window."
+          else
+            echo "proceed=false" >> "$GITHUB_OUTPUT"
+            echo "Scheduled sync: skipped (not in three-day window)."
+          fi
+
       - name: Configure Git
+        if: steps.interval.outputs.proceed == 'true'
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
 
       - name: Pull latest examples from PraisonAI
+        if: steps.interval.outputs.proceed == 'true'
         run: |
           set -euo pipefail
           git clone --filter=blob:none --no-checkout https://github.com/MervinPraison/PraisonAI.git _upstream
@@ -37,6 +58,7 @@ jobs:
 
       - name: Check for changes
         id: git-check
+        if: steps.interval.outputs.proceed == 'true'
         run: |
           git add -A
           if git diff --staged --quiet; then
@@ -47,15 +69,27 @@ jobs:
 
       - name: Get timestamp
         id: date
-        if: steps.git-check.outputs.changes == 'true'
+        if: steps.interval.outputs.proceed == 'true' && steps.git-check.outputs.changes == 'true'
         run: echo "datetime=$(date -u '+%Y-%m-%d %H:%M:%S UTC')" >> "$GITHUB_OUTPUT"
 
-      - name: Commit and push
-        if: steps.git-check.outputs.changes == 'true'
+      - name: Open pull request with upstream mirror
+        if: steps.interval.outputs.proceed == 'true' && steps.git-check.outputs.changes == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
+          set -euo pipefail
+          BRANCH="chore/sync-praisonai-${{ github.run_id }}"
+          git checkout -b "$BRANCH"
           git commit -m "sync: mirror examples from PraisonAI — ${{ steps.date.outputs.datetime }}"
-          git push
+          git push -u origin "$BRANCH"
+          gh pr create --base main --head "$BRANCH" \
+            --title "sync: mirror examples from PraisonAI" \
+            --body "Automated sync of \`examples/\` from [PraisonAI](https://github.com/MervinPraison/PraisonAI) \`main\`.
 
-      - name: No changes
-        if: steps.git-check.outputs.changes == 'false'
-        run: echo "No changes from upstream examples"
+          **Generated:** ${{ steps.date.outputs.datetime }}
+
+          Review and merge to align this repository with upstream."
+
+      - name: No upstream diff
+        if: steps.interval.outputs.proceed == 'true' && steps.git-check.outputs.changes == 'false'
+        run: echo "No diff against upstream examples; no PR opened."
