@@ -1,6 +1,6 @@
 # PraisonAI examples
 
-This repository mirrors the [`examples`](https://github.com/MervinPraison/PraisonAI/tree/main/examples) directory from [PraisonAI](https://github.com/MervinPraison/PraisonAI).
+This repository mirrors the [`examples`](https://github.com/MervinPraison/PraisonAI/tree/main/examples) directory from [PraisonAI](https://github.com/MervinPraison/PraisonAI). The GitHub remote is [MervinPraison/PraisonAI-examples](https://github.com/MervinPraison/PraisonAI-examples).
 
 ## Sync
 
