@@ -4,7 +4,7 @@
 # Each action file exports: run(step, flags, cwd) → dict
 #
 # Directory structure:
-#   examples/workflows/
+#   yaml/package_workflows/
 #   ├── file-actions-demo.yaml   ← this file
 #   └── actions/
 #       ├── system_info.py       ← action: system-info

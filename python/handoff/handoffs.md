@@ -147,9 +147,9 @@ agent.instructions = prompt_with_handoff_instructions(
 ## Complete Example
 
 See the examples directory for complete working examples:
-- `examples/handoff_basic.py` - Simple handoff demonstration
-- `examples/handoff_advanced.py` - Advanced features with callbacks and filters
-- `examples/handoff_customer_service.py` - Real-world customer service workflow
+- `python/handoff/handoff_basic.py` - Simple handoff demonstration
+- `python/handoff/handoff_advanced.py` - Advanced features with callbacks and filters
+- `python/handoff/handoff_customer_service.py` - Real-world customer service workflow
 
 ## Best Practices
 

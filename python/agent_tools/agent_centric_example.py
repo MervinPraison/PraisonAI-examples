@@ -6,7 +6,7 @@ the Agent the central orchestrator for file operations.
 
 How to run:
     export OPENAI_API_KEY=your_key
-    python examples/agent_tools/agent_centric_example.py
+    python python/agent_tools/agent_centric_example.py
 
 Prerequisites:
     pip install praisonai praisonaiagents

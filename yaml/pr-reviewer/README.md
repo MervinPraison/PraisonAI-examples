@@ -56,7 +56,7 @@ This file defines the multi-agent team and their specific responsibilities.
 
 1. Copy the template from:
    ```
-   examples/yaml/praisonai-pr-review.yml.template
+   yaml/praisonai-pr-review.yml.template
    ```
 
 2. Save it as:

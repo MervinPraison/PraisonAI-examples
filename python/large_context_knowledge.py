@@ -11,7 +11,7 @@ Demonstrates the full pipeline:
 6. Hierarchical summarization
 
 Usage:
-    python examples/large_context_knowledge.py
+    python python/large_context_knowledge.py
 """
 
 import os

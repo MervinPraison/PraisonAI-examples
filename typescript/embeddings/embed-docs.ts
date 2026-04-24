@@ -3,7 +3,7 @@
  * 
  * Demonstrates chunking and embedding documents for retrieval
  * 
- * Run: npx ts-node examples/js/embeddings/embed-docs.ts
+ * Run: npx ts-node typescript/embeddings/embed-docs.ts
  */
 
 import { embedMany, cosineSimilarity } from '../../../src/praisonai-ts/dist/llm/embeddings';

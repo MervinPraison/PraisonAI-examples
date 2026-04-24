@@ -6,7 +6,7 @@ for semantic code analysis (listing symbols, finding definitions, etc.).
 
 How to run:
     export OPENAI_API_KEY=your_key
-    python examples/lsp/lsp_code_analysis_example.py
+    python python/lsp/lsp_code_analysis_example.py
 
 Prerequisites:
     pip install praisonai praisonaiagents

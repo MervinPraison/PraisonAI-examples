@@ -1,5 +1,5 @@
 # Harbor Job Configuration for PraisonAI Wrapper - 5 Task Test
-# Run with: harbor run -c examples/terminal_bench/job_test_5_wrapper.yaml -n 1
+# Run with: harbor run -c python/terminal_bench/job_test_5_wrapper.yaml -n 1
 
 dataset: terminal-bench/terminal-bench-2
 

@@ -3,7 +3,7 @@
  * 
  * Demonstrates using Agent.embed() for text embeddings
  * 
- * Run: npx ts-node examples/js/embeddings/embed-basic.ts
+ * Run: npx ts-node typescript/embeddings/embed-basic.ts
  */
 
 import { Agent } from '../../../src/praisonai-ts/dist/agent/simple';

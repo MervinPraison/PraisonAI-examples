@@ -5,7 +5,7 @@ This module contains both unit tests and integration tests for the
 PraisonAI Harbor integration.
 
 Run tests with:
-    python -m pytest examples/terminal_bench/test_integration.py -v
+    python -m pytest python/terminal_bench/test_integration.py -v
 
 Requirements:
     pip install pytest praisonaiagents
@@ -270,5 +270,5 @@ if __name__ == "__main__":
         print("   (Some tests will be skipped)")
     
     print()
-    print("Run tests with: python -m pytest examples/terminal_bench/test_integration.py -v")
-    print("Run real agentic test: python -m pytest examples/terminal_bench/test_integration.py::TestIntegration::test_praisonai_agent_real -v -s")
+    print("Run tests with: python -m pytest python/terminal_bench/test_integration.py -v")
+    print("Run real agentic test: python -m pytest python/terminal_bench/test_integration.py::TestIntegration::test_praisonai_agent_real -v -s")

@@ -28,11 +28,11 @@ export LANGFUSE_PUBLIC_KEY=pk-...
 
 ```bash
 # Run with ts-node or tsx
-npx tsx examples/js/observability/basic-tracing.ts
-npx tsx examples/js/observability/multi-agent-attribution.ts
+npx tsx typescript/observability/basic-tracing.ts
+npx tsx typescript/observability/multi-agent-attribution.ts
 
 # With Langfuse (requires API keys)
-LANGFUSE_SECRET_KEY=sk-... npx tsx examples/js/observability/langfuse-integration.ts
+LANGFUSE_SECRET_KEY=sk-... npx tsx typescript/observability/langfuse-integration.ts
 ```
 
 ## Supported Tools

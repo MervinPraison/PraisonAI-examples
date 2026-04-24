@@ -3,7 +3,7 @@
  * 
  * Demonstrates building a simple retrieval system with embeddings
  * 
- * Run: npx ts-node examples/js/embeddings/retrieval.ts
+ * Run: npx ts-node typescript/embeddings/retrieval.ts
  */
 
 import { embed, embedMany, cosineSimilarity } from '../../../src/praisonai-ts/dist/llm/embeddings';

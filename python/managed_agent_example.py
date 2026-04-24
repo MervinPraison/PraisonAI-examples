@@ -10,7 +10,7 @@ Prerequisites:
     pip install 'anthropic>=0.94.0' praisonaiagents praisonai
 
 Usage:
-    python examples/python/managed_agent_example.py
+    python python/managed_agent_example.py
 """
 
 import os

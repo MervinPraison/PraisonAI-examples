@@ -76,13 +76,13 @@ export OPENAI_API_KEY="your-api-key-here"
 
 ```bash
 # Session management example
-python examples/python/stateful/session-example.py
+python python/stateful/session-example.py
 
 # Workflow state management example  
-python examples/python/stateful/workflow-state-example.py
+python python/stateful/workflow-state-example.py
 
 # Memory quality management example
-python examples/python/stateful/memory-quality-example.py
+python python/stateful/memory-quality-example.py
 ```
 
 ## Key Concepts Demonstrated

@@ -2,8 +2,8 @@ framework: ag2
 topic: "The impact of open-source AI on enterprise software development"
 
 # Install: pip install "praisonai[ag2]"
-# Run:     praisonai --framework ag2 examples/ag2/ag2_multi_agent.yaml
-#       or praisonai run examples/ag2/ag2_multi_agent.yaml --framework ag2
+# Run:     praisonai --framework ag2 yaml/ag2/ag2_multi_agent.yaml
+#       or praisonai run yaml/ag2/ag2_multi_agent.yaml --framework ag2
 #
 # This example demonstrates AG2's GroupChat multi-agent coordination.
 # Both agents participate in a collaborative conversation managed by

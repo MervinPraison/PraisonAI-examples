@@ -17,7 +17,7 @@ Prerequisites:
    export N8N_API_KEY="your-api-key"  # optional for local testing
 
 Usage:
-    python examples/python/n8n_integration_example.py
+    python python/n8n_integration_example.py
 """
 
 import os
@@ -193,7 +193,7 @@ async def demo_n8n_to_praisonai():
                 
     except httpx.ConnectError:
         print("❌ Connection error: Make sure the API server is running")
-        print("💡 Start server in another terminal: python examples/python/n8n_integration_example.py --server")
+        print("💡 Start server in another terminal: python python/n8n_integration_example.py --server")
     except Exception as e:
         print(f"❌ Demo error: {e}")
 
@@ -308,8 +308,8 @@ async def main():
         await demo_praisonai_to_n8n(agents)
         create_n8n_workflow_examples()
         print("\n💡 To test n8n → PraisonAI, start the server:")
-        print("   python examples/python/n8n_integration_example.py --server")
-        print("   Then run: python examples/python/n8n_integration_example.py --test-api")
+        print("   python python/n8n_integration_example.py --server")
+        print("   Then run: python python/n8n_integration_example.py --test-api")
         
     else:
         # Default: show info and run basic demo

@@ -1,7 +1,7 @@
 # Harbor Job Configuration for PraisonAI on Terminal-Bench 2.0
 # 
 # Usage:
-#   harbor run -c examples/terminal_bench/job.yaml
+#   harbor run -c python/terminal_bench/job.yaml
 #
 # This configuration runs PraisonAI external agent on Terminal-Bench 2.0 tasks
 # with 8 concurrent trials using GPT-4o.

@@ -162,4 +162,4 @@ memory_config = {
 
 - [Gemini API Documentation](https://ai.google.dev/gemini-api/docs/embeddings)
 - [LiteLLM Embedding Models](https://docs.litellm.ai/docs/embedding/supported_embedding)
-- Example: `/examples/python/memory/gemini-embedding-example.py`
+- Example: `/python/memory/gemini-embedding-example.py`

@@ -5,7 +5,7 @@ import sys
 import os
 from pathlib import Path
 
-EXAMPLES_DIR = Path(__file__).parent
+EXAMPLES_DIR = Path(__file__).resolve().parent.parent
 RESULTS = []
 
 def run_example(path: Path) -> tuple:
@@ -17,7 +17,11 @@ def run_example(path: Path) -> tuple:
             capture_output=True,
             text=True,
             timeout=60,
-            env={**os.environ, "PYTHONPATH": str(EXAMPLES_DIR.parent / "src")}
+            env=(
+                {**os.environ, "PYTHONPATH": str(EXAMPLES_DIR.parent / "src")}
+                if (EXAMPLES_DIR.parent / "src").is_dir()
+                else {**os.environ}
+            ),
         )
         output = result.stdout + result.stderr
         if "PASSED" in output:

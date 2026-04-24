@@ -243,7 +243,7 @@ The multi-provider system is extensible. To add new models:
 
 ## 📚 Examples
 
-See the complete example in `examples/python/agents/multi-provider-agent.py` for:
+See the complete example in `python/agents/multi-provider-agent.py` for:
 - Auto-routing examples
 - Cost-optimized workflows
 - Performance-optimized agents

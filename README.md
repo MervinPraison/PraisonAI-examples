@@ -10,15 +10,13 @@ This repository mirrors the [`examples`](https://github.com/MervinPraison/Praiso
 
 ## Layout of this mirror
 
-Upstream groups material in several ways at once; use this map when browsing.
+This mirror places the upstream `examples/` tree at the repository root. Top-level folders are language-first:
 
 | Area | What you will find |
 |------|---------------------|
-| **`python/`** | Curated Python examples (agents, workflows, tools, providers, managed agents, and similar). Often the best place to start for Python. |
-| **Repository root** | Many additional Python packages and single-file `.py` examples (for example `basic/`, `serve/`, `vector/`, `workflows/`) that live at the root in upstream for historical reasons. |
+| **`python/`** | Python examples (agents, workflows, tools, providers, managed agents, CLI helpers, and similar). Run scripts from the repo root, for example `python python/agents/single-agent.py`. |
 | **`yaml/`** | YAML workflow definitions and related layout; see upstream [examples README](https://github.com/MervinPraison/PraisonAI/blob/main/examples/README.md) for YAML links. |
-| **`js/`** | TypeScript/JavaScript examples (Node) under the `js/` tree upstream. |
-| **`typescript/`** | A smaller set of TypeScript examples alongside `js/` until upstream consolidates naming. |
+| **`typescript/`** | TypeScript/Node examples (merged from the former `js/` tree where applicable). |
 | **Rust** | There is **no** `rust/` examples tree in this mirror yet. Rust SDK work lives in the main monorepo under [`src/praisonai-rust`](https://github.com/MervinPraison/PraisonAI/tree/main/src/praisonai-rust). |
 
 For tables, quick links, and how to run samples, prefer the upstream [examples README](https://github.com/MervinPraison/PraisonAI/blob/main/examples/README.md) so you always see the latest copy.

@@ -28,9 +28,9 @@ export GOOGLE_API_KEY=AIza...
 
 ```bash
 # Run with ts-node or tsx
-npx tsx examples/js/providers/multi-provider.ts
-npx tsx examples/js/providers/openai-compatible.ts
-npx tsx examples/js/providers/local-ollama.ts
+npx tsx typescript/providers/multi-provider.ts
+npx tsx typescript/providers/openai-compatible.ts
+npx tsx typescript/providers/local-ollama.ts
 ```
 
 ## Environment Variables

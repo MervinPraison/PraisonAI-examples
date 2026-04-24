@@ -8,7 +8,7 @@ topic: "Cloud-native AI deployment strategies on AWS"
 #   aws configure  (or set AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_DEFAULT_REGION)
 #
 # Run:
-#   praisonai --framework ag2 examples/ag2/ag2_bedrock.yaml
+#   praisonai --framework ag2 yaml/ag2/ag2_bedrock.yaml
 #
 # The AG2 adapter detects api_type="bedrock" from the llm config and uses
 # LLMConfig(api_type="bedrock", model=...) — no OPENAI_API_KEY required.

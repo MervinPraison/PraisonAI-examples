@@ -1,6 +1,14 @@
 *.txt
 *.csv
 
+# Allow tracked example trees named db/output (repo root mirrors upstream examples/)
+db
+!db/
+!python/db/
+output
+!output/
+!python/output/
+
 # Local / tooling (praisonai-examples repo)
 .DS_Store
 __pycache__/

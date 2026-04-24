@@ -2,8 +2,8 @@ framework: ag2
 topic: "Research the latest developments in AI agents"
 
 # Install: pip install "praisonai[ag2]"
-# Run:     praisonai --framework ag2 examples/ag2/ag2_basic.yaml
-#       or praisonai run examples/ag2/ag2_basic.yaml --framework ag2
+# Run:     praisonai --framework ag2 yaml/ag2/ag2_basic.yaml
+#       or praisonai run yaml/ag2/ag2_basic.yaml --framework ag2
 
 roles:
   research_agent:
